@@ -1,0 +1,54 @@
+<html>
+<form action="">
+  x1<input type="text" value="200" name="x1">
+  y1<input type="text" value="500" name="y1">
+  x2<input type="text" value="800" name="x2">
+  y2<input type="text" value="500" name="y2">
+  <button>Draw</button>
+</form>
+<ul></ul>
+<div ></div>
+<script>
+  const NS = {
+    SVG: 'http://www.w3.org/2000/svg'
+  }
+
+  const svg = document.createElementNS(NS.SVG, "svg");
+    svg.setAttribute("width", "1000")
+    svg.setAttribute("height", "1000")
+
+  document.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const color = Math.round(Math.random() * 0xFFFFFF)
+    const fill = '#' + color.toString(16).padStart(6,'0')
+
+    const path = document.createElementNS(NS.SVG, "path");
+    const form = new FormData(document.querySelector('form'))
+    const d = `M 0 0 C ${form.get('x1')} ${form.get('y1')}, ${form.get('x2')} ${form.get('y2')}, 1000 500`
+    path.setAttribute('d', d)
+    path.setAttribute('stroke', fill)
+    path.setAttribute('fill', 'transparent')
+    svg.appendChild(path)
+
+    const circle1 = document.createElementNS(NS.SVG, "circle");
+    circle1.setAttribute('cx', `${form.get('x1')}`)
+    circle1.setAttribute('cy', `${form.get('y1')}`)
+    circle1.setAttribute('r', 10)
+    circle1.setAttribute('fill', fill)
+    svg.appendChild(circle1)
+
+    const circle2 = document.createElementNS(NS.SVG, "circle");
+    circle2.setAttribute('cx', `${form.get('x2')}`)
+    circle2.setAttribute('cy', `${form.get('y2')}`)
+    circle2.setAttribute('r', 10)
+    circle2.setAttribute('fill', fill)
+    svg.appendChild(circle2)
+
+    document.querySelector('div').appendChild(svg)
+
+    document.querySelector('ul').insertAdjacentHTML('beforeend', `<li style="color:${fill};">${d}</li>`)
+  })
+</script>
+
+</html>

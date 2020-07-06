@@ -1,0 +1,62 @@
+<html>
+
+<head>
+  <style>
+    svg {
+      width: 1000px;
+      height: 800px;
+      background-color: lavender;
+      display: block;
+    }
+
+    path {
+      fill: none;
+      stroke-width: 15;
+    }
+
+    path:hover {
+      stroke-width: 10;
+    }
+  </style>
+</head>
+
+<body></body>
+<script>
+  class RelationContainer {
+    constructor(el) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+      svg.setAttribute('width', 1000)
+      svg.setAttribute('height', 800)
+      this._container = el.appendChild(svg)
+    }
+
+    draw(start, end, color = 'black') {
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+      const controleY = Math.min(start.y, end.y) / 2 - (end.x - start.x) / 3 + 150
+      path.setAttribute('d', `M ${start.x} ${start.y} C ${start.x + 50} ${controleY}, ${end.x - 50} ${controleY}, ${end.x} ${end.y}`)
+      path.setAttribute('style', `stroke: ${color}`)
+      this._container.appendChild(path)
+    }
+  }
+
+  const relationContainer = new RelationContainer(document.body)
+  relationContainer.draw({ x: 50, y: 150 }, { x: 950, y: 750 })
+  relationContainer.draw({ x: 50, y: 500 }, { x: 450, y: 200 })
+  relationContainer.draw({ x: 50, y: 500 }, { x: 950, y: 200 })
+  relationContainer.draw({ x: 50, y: 500 }, { x: 250, y: 500 })
+  relationContainer.draw({ x: 50, y: 500 }, { x: 450, y: 500 })
+  relationContainer.draw({ x: 50, y: 500 }, { x: 550, y: 500 })
+  relationContainer.draw({ x: 50, y: 500 }, { x: 650, y: 500 })
+  relationContainer.draw({ x: 50, y: 500 }, { x: 750, y: 500 })
+  relationContainer.draw({ x: 50, y: 500 }, { x: 950, y: 500 })
+  relationContainer.draw({ x: 350, y: 500 }, { x: 850, y: 500 }, 'blue')
+  relationContainer.draw({ x: 450, y: 500 }, { x: 950, y: 500 }, 'red')
+  relationContainer.draw({ x: 300, y: 750 }, { x: 600, y: 750 }, 'none')
+  relationContainer.draw({ x: 50, y: 750 }, { x: 950, y: 750 })
+
+  document.body.addEventListener('click', (e) => {
+    console.log(e.target)
+  })
+</script>
+
+</html>

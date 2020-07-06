@@ -1,0 +1,26 @@
+<html>
+
+<form action="">
+  <button>Draw</button>
+</form>
+
+<div></div>
+
+<script>
+  document.querySelector('button').addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+
+    svg.setAttribute('width', 100)
+    svg.setAttribute('height', 100)
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+    path.setAttribute('d', 'M 10 10 H 90 V 90 H 10 L 10 10')
+    svg.appendChild(path)
+
+    document.querySelector('div').appendChild(svg)
+  })
+</script>
+
+</html>
