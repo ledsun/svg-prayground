@@ -1,0 +1,101 @@
+<html>
+
+<head>
+  <style>
+    svg {
+      margin-left: 100px;
+      background-color: lavender;
+    }
+
+    circle {
+      fill: none;
+    }
+  </style>
+</head>
+
+<body>
+  <p>一回目にクリックした点の二回目にクリックした点を曲線でつなぎます。</p>
+  <svg width="1500" height="600" namespace="http://www.w3.org/2000/svg">
+  </svg>
+  <script>
+    const NS = {
+      SVG: 'http://www.w3.org/2000/svg',
+      XLINK: 'http://www.w3.org/1999/xlink'
+    }
+
+    function getColor() {
+      const color = (Math.round(Math.random() * 0xFFFFFF)).toString(16).padStart(6, '0')
+      return `#${color}`
+    }
+
+    class RelationRenderer {
+      constructor(svg) {
+        this._svg = svg
+        this._source = null
+        this._color = null
+
+        this._prepareSymbol(svg)
+      }
+
+      _prepareSymbol(svg) {
+        const polygon = document.createElementNS(NS.SVG, 'polygon')
+        polygon.setAttribute('points', '0 0, 10 10, 20 0, 10 20')
+        const symbol = document.createElementNS(NS.SVG, 'symbol')
+        symbol.setAttribute('id', 'arrow')
+        symbol.appendChild(polygon)
+        svg.appendChild(symbol)
+      }
+
+      _drawCircle(x, y, color) {
+        const circle = document.createElementNS(NS.SVG, 'circle')
+        circle.setAttribute('cx', x)
+        circle.setAttribute('cy', y)
+        circle.setAttribute('r', 10)
+        circle.setAttribute('style', `stroke: ${color}`)
+
+        this._svg.appendChild(circle)
+      }
+
+      _drawArrow(x, y, color) {
+        const arrow = document.createElementNS(NS.SVG, 'use')
+        arrow.setAttributeNS(NS.XLINK, 'xlinx:href', '#arrow')
+        arrow.setAttribute('x', x)
+        arrow.setAttribute('y', y)
+        arrow.setAttribute('transform', 'translate(-10, -20)')
+        arrow.setAttribute('style', `fill: ${color}`)
+
+        this._svg.appendChild(arrow)
+      }
+
+      _drawPath(x1, y1, x2, y2, color) {
+        const path = document.createElementNS(NS.SVG, 'path')
+        const controleY = Math.min(y1, y2) - Math.abs(x2 - x1) / 3 - 50
+
+        path.setAttribute('d', `M ${x1}, ${y1 - 10} C ${x1} ${controleY}, ${x2} ${controleY}, ${x2} ${y2}`)
+        path.setAttribute('style', `stroke: ${color}; fill: none;`)
+
+        this._svg.appendChild(path)
+      }
+
+      draw(x, y) {
+        if (!this._source) {
+          this._color = getColor()
+          this._drawCircle(x, y, this._color)
+          this._source = [x, y]
+        } else {
+          this._drawArrow(x, y, this._color)
+          this._drawPath(this._source[0], this._source[1], x, y, this._color)
+          this._source = null
+        }
+      }
+    }
+
+    const svg = document.querySelector('svg')
+    const renderer = new RelationRenderer(svg)
+    svg.addEventListener('click', (e) =>
+      renderer.draw(e.offsetX, e.offsetY)
+    )
+  </script>
+</body>
+
+</html>
