@@ -4,7 +4,7 @@ SVGの学習用実験場
 
 - [必要に応じてマーカーを生成](gerenate-marker.html)
 - [マーカー](marker.html)
-- [二次ベジェ曲線の制御点](contorl-point-of-quadracit-bezier.html)
+- [二次ベジェ曲線の制御点](control-point-of-quadratic-bezier.html)
 - [二次ベジェ曲線](quadratic-bezier.html)
 - [太極図](tai-chi.html)
 - [ドラッグアンドドロップで線を引く](drag-relation.html)
