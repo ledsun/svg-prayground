@@ -1,0 +1,77 @@
+<html>
+
+<body>
+  <p>ランダムで色付き矢印付き曲線を表示</p>
+  <svg width="1000" height="700" style="background-color: #eee">
+    <defs />
+    <g />
+  </svg>
+  <br>
+  <span></span>
+  <script>
+    class Renderer {
+      constructor(container) {
+        this._container = container.querySelector('g')
+        this._defs = container.querySelector('defs')
+        this._source = null
+        this._markers = new Set()
+      }
+
+      clearAll() {
+        this._container.innerHTML = ''
+      }
+
+      start(x, y) {
+        this._source = [x, y]
+      }
+
+      end(x, y) {
+        if (this._source) {
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+          path.setAttribute('d', `M ${this._source[0]} ${this._source[1]} Q 500 350 ${x} ${y}`)
+
+          const color = Math.round(Math.random() * 0xFFF).toString(16).padStart(3, '0')
+
+          if (!this._markers.has(`marker-${color}`)) {
+            const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker')
+            marker.setAttribute('id', `marker-${color}`)
+            marker.setAttribute('markerWidth', '16')
+            marker.setAttribute('markerHeight', '16')
+            marker.setAttribute('refX', '8')
+            marker.setAttribute('refY', '8')
+            marker.setAttribute('orient', 'auto')
+            const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon')
+            polygon.setAttribute('points', '0 0, 16 8, 0 16, 8 8')
+            polygon.setAttribute('fill', `#${color}`)
+            marker.appendChild(polygon)
+            this._defs.appendChild(marker)
+            this._markers.add(`marker-${color}`)
+          }
+
+          path.setAttribute('style', `fill: none; stroke: #${color}; marker-end: url(#marker-${color})`)
+          this._container.appendChild(path)
+          this._source = null
+        }
+      }
+    }
+
+    function draw(renderer) {
+      renderer.clearAll()
+
+      for (let index = 0; index < 250; index++) {
+        renderer.start(Math.random() * 1000, Math.random() * 700)
+        renderer.end(Math.random() * 1000, Math.random() * 700)
+      }
+
+      document.querySelector('span').innerHTML = `線が${document.querySelectorAll('path').length} マーカーが${document.querySelectorAll('marker').length}`
+    }
+
+    const svg = document.querySelector('svg')
+    const renderer = new Renderer(svg)
+    draw(renderer)
+
+    setInterval(() => draw(renderer), 500)
+  </script>
+</body>
+
+</html>
