@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <p>マウスカーソルの位置に二次ベジェ曲線の制御点</p>
+    <svg width="1000" height="750" style="background-color: lavender;">
+      <circle cx="500" cy="50" r="5" />
+      <path d="M 50 700 Q 500 50, 950 700" style="stroke: black; fill: none;" />
+    </svg>
+    <script>
+      const svg = document.querySelector('svg')
+
+      svg.addEventListener('mousemove',(e) => {
+        const path = svg.querySelector('path')
+        path.setAttribute('d', `M 50 700 Q ${e.offsetX} ${e.offsetY}, 950 700`)
+        
+        const circle = svg.querySelector('circle')
+        circle.setAttribute('cx', e.offsetX)
+        circle.setAttribute('cy', e.offsetY)
+      })
+    </script>
+  </body>
+</html>
