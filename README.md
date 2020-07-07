@@ -2,6 +2,7 @@ SVGの学習用実験場
 
 # クライアントサイド
 
+- [太極図](tai-chi.html)
 - [ドラッグアンドドロップで線を引く](drag-relation.html)
 - [マウスクリックで線を引く](render-relation.html)
 - [矢印](arrow.html)
