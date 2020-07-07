@@ -1,0 +1,70 @@
+<html>
+
+<head>
+  <style>
+    svg {
+      background-color: lavender;
+    }
+  </style>
+</head>
+
+<body>
+  <p>ドラッグアンドドロップで曲線を引きます。</p>
+  <svg width="1000" height="600"></svg>
+  <script>
+    const NS = {
+      SVG: 'http://www.w3.org/2000/svg'
+    }
+
+    class RelationDragger {
+      constructor(container) {
+        this._container = container
+        this._source = null
+        this._renderingRelation = null
+      }
+
+      _createRelation(x, y) {
+        const path = document.createElementNS(NS.SVG, 'path')
+        path.setAttribute('d', `M ${x} ${y} C ${x} ${y}, ${x} ${y}, ${x} ${y}`)
+        path.setAttribute('style', 'stroke: blue; fill: none;')
+        this._container.appendChild(path)
+
+        return path
+      }
+
+      setSource(x, y) {
+        this._source = [x, y]
+        this._renderingRelation = this._createRelation(x, y)
+      }
+
+      move(x, y) {
+        if (this._source && this._renderingRelation) {
+          const controleY = Math.min(y, this._source[1]) - 300 + (Math.abs(x - this._source[0]) / 3)
+          this._renderingRelation.setAttribute('d', `M ${this._source[0]} ${this._source[1]} C ${this._source[0]} ${controleY}, ${x}, ${controleY}, ${x} ${y}`)
+        }
+      }
+
+      end() {
+        this._source = null
+        this._renderingRelation = null
+      }
+    }
+
+    const svg = document.querySelector('svg')
+    const dragger = new RelationDragger(svg)
+    svg.addEventListener('mousedown', (e) =>
+      dragger.setSource(e.offsetX, e.offsetY)
+    )
+    svg.addEventListener('mousemove', (e) =>
+      dragger.move(e.offsetX, e.offsetY)
+    )
+    svg.addEventListener('mouseup', (e) =>
+      dragger.end()
+    )
+    svg.addEventListener('mouseleave', (e) =>
+      dragger.end()
+    )
+  </script>
+</body>
+
+</html>
