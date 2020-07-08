@@ -1,0 +1,166 @@
+<html>
+
+<head>
+  <style>
+    svg {
+      fill: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    <a href="https://css-tricks.com/snippets/svg/svg-patterns/">https://css-tricks.com/snippets/svg/svg-patterns/</a>
+  </h1>
+
+  <svg width="200" height="200">
+    <pattern id="pattern-circle" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" viewBox="0 0 2 2">
+      <circle cx="1" cy="1" r="1" />
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" style="fill: url(#pattern-circle)" />
+  </svg>
+
+  <svg width="200" height="200">
+    <pattern id="pattern-checker" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" viewBox="0 0 2 2">
+      <rect id="box" x="0" y="0" width="1" height="1" />
+      <use x="1" y="1" xlink:href="#box" />
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" style="fill: url(#pattern-checker)" />
+  </svg>
+
+  <svg width="200" height="200">
+    <pattern id="pattern-cubes" x="0" y="0" patternUnits="userSpaceOnUse" width="40" height="64" viewBox="0 0 10 16">
+      <path id="left-shade" d="M 0 0 L 5 3 V 8 L 0 5"></path>
+      <path id="right-shade" d="M 10 0 L 5 3 V 8 L 10 5" style="fill: #ffdb99;"></path>
+
+      <use x="5" y="8" xlink:href="#left-shade"></use>
+      <use x="-5" y="8" xlink:href="#right-shade"></use>
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-cubes)"></rect>
+  </svg>
+
+  <svg width="200" height="200">
+    <pattern id="pattern-chevron" x="0" y="0" patternUnits="userSpaceOnUse" width="40" height="40" viewBox="0 0 10 10">
+      <path id="left-shade" d="M 0 0 L 5 3 V 8 L 0 5"></path>
+      <path id="right-shade" d="M 10 0 L 5 3 V 8 L 10 5"></path>
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-chevron)"></rect>
+  </svg>
+
+  <h1><a href="https://philiprogers.com/svgpatterns/#argyle">https://philiprogers.com/svgpatterns/#argyle</a></h1>
+  <svg width="200" height="200">
+    <pattern id="stripe" width='90' height='30' patternUnits="userSpaceOnUse">
+      <rect width='90' height='30' fill='#00a9f1' />
+      <rect width='90' height='18' fill='#26baf4' />
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#stripe)"></rect>
+  </svg>
+
+  <svg width="200" height="200">
+    <pattern id="argyle" width='60' height='90' patternUnits="userSpaceOnUse">
+      <g transform='scale(1 1.5)'>
+        <rect width='99' height='99' fill='#6d695c' />
+        <rect width='42.42' height='42.42' transform='translate(30 0) rotate(45)' fill='#625f53' />
+        <rect width='99' height='1' transform='rotate(45)' fill='#716f64' />
+        <rect width='99' height='1' transform='translate(0 60) rotate(-45)' fill='#716f64' />
+      </g>
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#argyle)"></rect>
+  </svg>
+
+  <svg width="200" height="200">
+    <pattern id="shippo" width='80' height='80' patternUnits="userSpaceOnUse">
+      <rect width='80' height='80' fill='#9ba7b4' />
+      <circle cx='40' cy='40' r='40' fill='#def' />
+      <path d='M0 40 A40 40 45 0 0 40 0 A40 40 315 0 0 80 40 A40 40 45 0 0 40 80 A40 40 270 0 0 0 40 Z'
+        fill='#9ba7b4' />
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#shippo)"></rect>
+  </svg>
+
+  <svg width="200" height="200">
+    <pattern id="chevron2" width='60' height='30' patternUnits="userSpaceOnUse">
+      <defs>
+        <rect id='r' width='30' height='15' fill='#bb085f' stroke-width='2.5' stroke='#7a054d' />
+        <g id='p'>
+          <use xlink:href='#r' />
+          <use y='15' xlink:href='#r' />
+          <use y='30' xlink:href='#r' />
+          <use y='45' xlink:href='#r' />
+        </g>
+      </defs>
+      <use xlink:href='#p' transform='translate(0 -25) skewY(40)' />
+      <use xlink:href='#p' transform='translate(30 0) skewY(-40)' />
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#chevron2)"></rect>
+  </svg>
+
+  <svg width="200" height="200">
+    <pattern id="microbial-mat" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width='20' height='20' fill='#8a3' />
+      <g style="stroke: #613; fill: none; stroke-width: 1;">
+        <circle r='9.2' />
+        <circle cy='18.4' r='9.2' />
+        <circle cx='18.4' cy='18.4' r='9.2' />
+      </g>
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#microbial-mat)"></rect>
+  </svg>
+
+  <svg width="200" height="200">
+    <pattern id="carbon-fiber" width="15" height="15" patternUnits="userSpaceOnUse">
+      <rect width='50' height='50' fill='#282828' />
+      <g id="dot">
+        <circle cx='3' cy='4.3' r='1.8' fill='#393939' />
+        <circle cx='3' cy='3' r='1.8' fill='black' />
+      </g>
+      <use x="7.5" y="7.5" xlink:href='#dot' />
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#carbon-fiber)"></rect>
+  </svg>
+
+  <svg width="200" height="200">
+    <pattern id="simple-horizontal" width="1" height="9" patternUnits="userSpaceOnUse">
+      <rect width='1' height='2' fill='#e7e7e7' />
+      <rect y='2' width='1' height='3' fill='#ececec' />
+      <rect y='5' width='1' height='4' fill='#f2f2f2' />
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#simple-horizontal)"></rect>
+  </svg>
+
+  <svg width="200" height="200">
+    <pattern id="blueprint-grid" width="50" height="50" patternUnits="userSpaceOnUse" viewBox="0 0 100 100">
+      <rect width='100' height='100' fill='#269' />
+      <g>
+        <defs>
+          <rect id="horizontal" width="100" height="1" style="fill: #6494b7;" />
+        </defs>
+        <use xlink:href="#horizontal" transform="translate(0, 20)" />
+        <use xlink:href="#horizontal" transform="translate(0, 40)" />
+        <use xlink:href="#horizontal" transform="translate(0, 60)" />
+        <use xlink:href="#horizontal" transform="translate(0, 80)" />
+        <use xlink:href="#horizontal" transform="translate(20, 0) rotate(90)" />
+        <use xlink:href="#horizontal" transform="translate(40, 0) rotate(90)" />
+        <use xlink:href="#horizontal" transform="translate(60, 0) rotate(90)" />
+        <use xlink:href="#horizontal" transform="translate(80, 0) rotate(90)" />
+      </g>
+      <rect width='100' height='100' fill='none' stroke-width='2' stroke='#fff' />
+    </pattern>
+
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#blueprint-grid)"></rect>
+  </svg>
+
+</body>
+
+</html>
