@@ -2,6 +2,8 @@ SVGの学習用実験場
 
 # クライアントサイド
 
+- [パターンとグラデーションを重ねる](pattern_and_gradient.html)
+- [グラデーション](gradient.html)
 - [様々なパターン](various-patterns.html)
 - [パターン](pattern.html)
 - [必要に応じてマーカーを生成](gerenate-marker.html)

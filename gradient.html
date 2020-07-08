@@ -1,0 +1,103 @@
+<html>
+
+<body>
+  <h1>線形グラデーション</h1>
+  <svg width="1000" height="400">
+    <defs>
+      <linearGradient id="two_hues">
+        <stop offset="0%" style="stop-color: #ffcc00;" />
+        <stop offset="100%" style="stop-color: #0099cc;" />
+      </linearGradient>
+
+      <linearGradient id="three_hues">
+        <stop offset="0%" style="stop-color: #ffcc00;" />
+        <stop offset="33.3%" style="stop-color: #cc6699;" />
+        <stop offset="100%" style="stop-color: #66cc99;" />
+      </linearGradient>
+
+      <linearGradient id="three_opacity_stops">
+        <stop offset="0%" style="stop-color: #906; stop-opacity: 1.0" />
+        <stop offset="50%" style="stop-color: #906; stop-opacity: 0.3" />
+        <stop offset="100%" style="stop-color: #906; stop-opacity: 0.1" />
+      </linearGradient>
+
+      <linearGradient id="right_to_left" xlink:href="#three_hues" x1="100%" y1="0%" x2="0%" y2="0%" />
+      <linearGradient id="down" xlink:href="#three_hues" x1="0%" y1="0%" x2="0%" y2="100%" />
+      <linearGradient id="up" xlink:href="#three_hues" x1="0%" y1="100%" x2="0%" y2="0%" />
+      <linearGradient id="diagnal" xlink:href="#three_hues" x1="0%" y1="0%" x2="100%" y2="100%" />
+
+      <linearGradient id="partial" xlink:href="#three_hues" x1="20%" y1="30%" x2="40%" y2="80%" />
+      <linearGradient id="padded" xlink:href="#partial" spreadMethod="pad" />
+      <linearGradient id="repeated" xlink:href="#partial" spreadMethod="repeat" />
+      <linearGradient id="reflected" xlink:href="#partial" spreadMethod="reflect" />
+
+    </defs>
+
+    <rect x="0" y="0" width="200" height="100" style="fill: url(#two_hues); stroke: black;" />
+    <rect x="0" y="100" width="400" height="100" style="fill: url(#two_hues); stroke: black;" />
+    <rect x="200" y="0" width="200" height="100" style="fill: url(#three_hues); stroke: black;" />
+    <rect x="400" y="0" width="200" height="100" style="fill: url(#three_opacity_stops); stroke: black;" />
+    <rect x="600" y="0" width="200" height="100" style="fill: url(#right_to_left); stroke: black;" />
+    <rect x="800" y="0" width="200" height="100" style="fill: url(#down); stroke: black;" />
+    <rect x="800" y="100" width="200" height="100" style="fill: url(#up); stroke: black;" />
+    <rect x="600" y="100" width="200" height="100" style="fill: url(#diagnal); stroke: black;" />
+    <rect x="0" y="280" width="200" height="100" style="fill: url(#padded); stroke: black;" />
+    <rect x="200" y="240" width="200" height="100" style="fill: url(#repeated); stroke: black;" />
+    <rect x="400" y="200" width="200" height="100" style="fill: url(#reflected); stroke: black;" />
+
+  </svg>
+
+  <h1>円形グラデーション</h1>
+  <svg width="1000" height="120">
+    <defs>
+      <radialGradient id="three_stops">
+        <stop offset="0%" style="stop-color: #ffcc00;" />
+        <stop offset="33.3%" style="stop-color: #cc6699;" />
+        <stop offset="100%" style="stop-color: #66cc99;" />
+      </radialGradient>
+
+      <radialGradient id="center_origin" xlink:href="#three_stops" cx="0%" cy="0%" r="141%" />
+      <radialGradient id="focal_set" xlink:href="#three_stops" cx="0%" cy="0%" fx="50%" fy="50%" r="100%" />
+
+      <radialGradient id="partial2" xlink:href="#three_stops" cx="0%" cy="0%" r="70%" />
+      <radialGradient id="padded2" xlink:href="#partial2" spreadMethod="pad" />
+      <radialGradient id="repeated2" xlink:href="#partial2" spreadMethod="repeat" />
+      <radialGradient id="reflected2" xlink:href="#partial2" spreadMethod="reflect" />
+    </defs>
+
+    <rect x="0" y="0" width="100" height="100" style="fill: url(#three_stops); stroke: black;" />
+    <rect x="100" y="0" width="200" height="100" style="fill: url(#three_stops); stroke: black;" />
+    <rect x="300" y="0" width="100" height="100" style="fill: url(#center_origin); stroke: black;" />
+    <rect x="400" y="0" width="100" height="100" style="fill: url(#focal_set); stroke: black;" />
+    <rect x="500" y="0" width="100" height="100" style="fill: url(#padded2); stroke: black;" />
+    <rect x="600" y="0" width="100" height="100" style="fill: url(#repeated2); stroke: black;" />
+    <rect x="700" y="0" width="100" height="100" style="fill: url(#reflected2); stroke: black;" />
+    <rect x="820" y="20" width="60" height="60" style="fill: none; stroke: url(#reflected2); stroke-width: 40;" />
+  </svg>
+
+  <h1>パターンとグラデーションの変換</h1>
+  <svg width="1000" height="600">
+    <defs>
+      <pattern id="tile" x="0" y="0" width="20%" height="20%" patternUnits="objectBoundingBox">
+        <path d="M 0 0 Q 5 20 10 10 T 20 20" style="stroke: black; fill: none;" />
+        <path d="M 0 0 h 20 v 20 h -20 z" style="stroke: black; fill: none" />
+      </pattern>
+      <pattern id="skewed-tile" patternTransform="skewY(15)" xlink:href="#tile" />
+
+      <linearGradient id="plain">
+        <stop offset="0%" style="stop-color: #ffcc00;" />
+        <stop offset="33.3%" style="stop-color: #cc6699;" />
+        <stop offset="100%" style="stop-color: #66cc99;" />
+      </linearGradient>
+      <linearGradient id="skewed-plain" gradientTransform="skewX(10)" xlink:href="#plain" />
+    </defs>
+
+    <rect x="20" y="10" width="100" height="100" style="fill: url(#tile); stroke: black;" />
+    <rect x="135" y="10" width="100" height="100" style="fill: url(#skewed-tile); stroke: black;" />
+
+    <rect x="20" y="120" width="215" height="50" style="fill: url(#plain); stroke: black;" />
+    <rect x="20" y="190" width="215" height="50" style="fill: url(#skewed-plain); stroke: black;" />
+  </svg>
+</body>
+
+</html>
