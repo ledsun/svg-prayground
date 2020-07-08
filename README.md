@@ -2,7 +2,7 @@ SVGの学習用実験場
 
 # クライアントサイド
 
-- [様々なパターン](variouse-pattern.html)
+- [様々なパターン](various-pattern.html)
 - [パターン](pattern.html)
 - [必要に応じてマーカーを生成](gerenate-marker.html)
 - [マーカー](marker.html)
