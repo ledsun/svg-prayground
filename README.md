@@ -2,6 +2,7 @@ SVGの学習用実験場
 
 # クライアントサイド
 
+- [正n角形](nangle.html)
 - [円から描く多角形](polygon_from_circle.html)
 - [パターンとグラデーションを重ねる](pattern_and_gradient.html)
 - [グラデーション](gradient.html)

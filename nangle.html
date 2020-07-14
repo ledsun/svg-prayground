@@ -1,0 +1,39 @@
+<html>
+<style>
+  polygon {
+    fill: none;
+  }
+</style>
+
+<body>
+  正<input type="number" min="0" max="100000" value="3" />角形
+  <br>
+  <svg width="600" height="600" viewBox="0 0 202 202">
+    <polygon transform="translate(101, 101) rotate(-90)" />
+  </svg>
+  <script>
+    function getPoints(n, r) {
+      const points = []
+      for (let i = 0; i < n; i++) {
+        points.push(Math.cos(Math.PI * 2 / n * i) * r)
+        points.push(Math.sin(Math.PI * 2 / n * i) * r)
+      }
+
+      return points
+    }
+
+    function drawNangle(number) {
+      const svg = document.querySelector('svg');
+      const polygon = svg.firstElementChild
+      polygon.setAttribute('style', `stroke: hsl(${number * 3},100%,50%);`)
+      polygon.setAttribute('points', getPoints(number, 100).join(' '))
+    }
+
+    const input = document.querySelector('input')
+    input.addEventListener('input', (e) => drawNangle(Number(e.target.value)))
+    input.focus()
+    drawNangle(3)
+  </script>
+</body>
+
+</html>
