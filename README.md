@@ -4,8 +4,8 @@ SVGの学習用実験場
 
 - [多数の図形をレンダリングするときpolygonをたくさん書くのとuseをたくさん書くのはどちらが速いか？](polygon-vs-use.html)
 - [正n角形](nangle.html)
-- [円から描く多角形](polygon_from_circle.html)
-- [パターンとグラデーションを重ねる](pattern_and_gradient.html)
+- [円から描く多角形](polygon-from-circle.html)
+- [パターンとグラデーションを重ねる](pattern-and-gradient.html)
 - [グラデーション](gradient.html)
 - [様々なパターン](various-patterns.html)
 - [パターン](pattern.html)
