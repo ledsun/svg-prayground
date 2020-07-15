@@ -1,0 +1,65 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <style>
+    polygon {
+      fill: none;
+      stroke: black;
+    }
+  </style>
+</head>
+
+<body>
+  polygonを描くのとuseで参照するのはどちらが速い？
+  <button id="polygon">polygon</button>
+  <button id="use">use</button>
+  <br>
+  <svg width="1000" height="600">
+  </svg>
+  <script>
+    const count = 10000
+    const svg = document.querySelector('svg')
+
+    document.querySelector('#polygon')
+      .addEventListener('click', () => {
+        svg.innerHTML = ''
+
+        for (let i = 0; i < count; i++) {
+          appendPolygon()
+        }
+      })
+
+    document.querySelector('#use')
+      .addEventListener('click', () => {
+        svg.innerHTML = ''
+
+        const symbol = document.createElementNS('http://www.w3.org/2000/svg', 'symbol')
+        symbol.setAttribute('id', 'triangle')
+        const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon')
+        polygon.setAttribute('points', "5 0 10 10 0 10")
+        symbol.appendChild(polygon)
+        svg.appendChild(symbol)
+
+        for (let i = 0; i < count; i++) {
+          appendUse()
+        }
+      })
+
+    function appendUse() {
+      const triangle = document.createElementNS('http://www.w3.org/2000/svg', 'use')
+      triangle.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#triangle')
+      triangle.setAttribute('transform', `translate(${Math.random() * 1000} ${Math.random() * 600})`)
+      svg.appendChild(triangle)
+    }
+
+    function appendPolygon() {
+      const triangle = document.createElementNS('http://www.w3.org/2000/svg', 'polygon')
+      triangle.setAttribute('points', "5 0 10 10 0 10")
+      triangle.setAttribute('transform', `translate(${Math.random() * 1000} ${Math.random() * 600})`)
+      svg.appendChild(triangle)
+    }
+  </script>
+</body>
+
+</html>
