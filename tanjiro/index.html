@@ -1,0 +1,52 @@
+<html>
+
+<body>
+  <h1>竈門炭治郎</h1>
+  <a
+    href="https://game.watch.impress.co.jp/docs/news/1265178.html">https://game.watch.impress.co.jp/docs/news/1265178.html</a>
+  <h2>
+    元画像
+  </h2>
+  <img src="1.jpg" />
+
+  <h2>
+    svgで再現したもの
+  </h2>
+  <svg width="1000" height="603">
+    <pattern id="tanjiro-unit" width="200" height="200" patternUnits="userSpaceOnUse"
+      patternTransform=" translate(-35, -23)">
+      <rect width="200" height="200" style="fill: #261817;" />
+      <rect x="100" width="100" height="100" style="fill: #25a37e;" />
+      <rect y="100" width="100" height="100" style="fill: #25a37e;" />
+    </pattern>
+
+    <rect x="0" y="0" width="603" height="604" style="fill: black;" />
+    <rect x="3" y="3" width="598" height="598" style="fill: url(#tanjiro-unit);" />
+  </svg>
+
+  <h2>
+    0.1秒ごとに入れ替えて差を確認
+  </h2>
+  <img id="img" src="1.jpg" height="603px" />
+  <svg id="svg" width="1000" height="603px">
+    <rect x="0" y="0" width="603" height="604" style="fill: black;" />
+    <rect x="3" y="3" width="598" height="598" style="fill: url(#tanjiro-unit);" />
+  </svg>
+  <script>
+    const img = document.querySelector('#img')
+    const svg = document.querySelector('#svg')
+
+    setInterval(() => {
+      if (img.getAttribute('style') === 'display: none;') {
+        img.setAttribute('style', "display: inlne;")
+        svg.setAttribute('style', "display: none;")
+      } else {
+        img.setAttribute('style', "display: none;")
+        svg.setAttribute('style', "display: inlne;")
+      }
+    }, 100)
+
+  </script>
+</body>
+
+</html>
