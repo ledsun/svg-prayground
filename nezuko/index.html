@@ -1,0 +1,74 @@
+<html>
+
+<body>
+  <h1>竈門禰豆子</h1>
+  <a
+    href="https://game.watch.impress.co.jp/docs/news/1265178.html">https://game.watch.impress.co.jp/docs/news/1265178.html</a>
+  <h2>
+    元画像
+  </h2>
+  <img src="2.jpg" />
+
+  <h2>
+    svgで再現したもの
+  </h2>
+  <svg width="603" height="603">
+    <pattern id="nezuko" width="202.4" height="159.5" patternUnits="userSpaceOnUse"
+      patternTransform="translate(-508.3, -2.45)" viewBox="0 0 2024 1595">
+      <rect width="2024" height="1595" style="fill: #f2a4a0;" />
+      <g style="fill: none; stroke: #1f1f15; stroke-width: 21;">
+        <g id="cross">
+          <line x1="0" y1="0" x2="2024" y2="1595" />
+          <line x1="0" y1="1595" x2="2024" y2="0" />
+          <line x1="645" y1="0" x2="1376" y2="1595" />
+          <line x1="1376" y1="0" x2="645" y2="1595" />
+        </g>
+        <g id="vertical">
+          <line y2="1595" />
+          <line x1="1012" x2="1012" y2="1595" style="stroke-width: 20;" />
+          <line x1="2024" x2="2024" y2="1595" />
+        </g>
+        <g id="horizontal">
+          <line x1="0" y1="0" x2="645" y2="0" />
+          <line x1="1376" y1="0" x2="2024" y2="0" />
+          <line x1="364" y1="797" x2="1658" y2="797" />
+          <line x1="0" y1="1595" x2="645" y2="1595" />
+          <line x1="1376" y1="1595" x2="2024" y2="1595" />
+        </g>
+        <line x1="0" y1="0" x2="364" y2="797" />
+        <line x1="0" y1="1595" x2="364" y2="797" />
+        <line x1="2024" y1="0" x2="1658" y2="797" />
+        <line x1="2024" y1="1595" x2="1658" y2="797" />
+      </g>
+    </pattern>
+
+    <rect width="100%" height="100%" />
+    <rect x="3" y="3" width="597" height="597" style="fill: url(#nezuko);" />
+  </svg>
+
+  <h2>
+    0.1秒ごとに入れ替えて差を確認
+  </h2>
+  <img id="img" src="2.jpg" />
+  <svg id="svg" width="603" height="603">
+    <rect width="100%" height="100%" />
+    <rect x="3" y="3" width="597" height="597" style="fill: url(#nezuko);" />
+  </svg>
+
+  <script>
+    const img = document.querySelector('#img')
+    const svg = document.querySelector('#svg')
+
+    setInterval(() => {
+      if (img.getAttribute('style') == 'display: none') {
+        img.setAttribute('style', 'display: inline')
+        svg.setAttribute('style', 'display: none')
+      } else {
+        img.setAttribute('style', 'display: none')
+        svg.setAttribute('style', 'display: inline')
+      }
+    }, 100)
+  </script>
+</body>
+
+</html>
