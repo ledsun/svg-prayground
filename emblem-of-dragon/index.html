@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .onImage {
+      position: absolute;
+      top: 861;
+      left: 355;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>竜の紋章</h1>
+  <img src="./cover.png" />
+  <svg width="289" height="337" class="onImage" viewBox="0 0 1156 1348">
+    <rect width="100%" height="100%" style="fill: none;" />
+    <g id="left" style="fill: yellow;">
+      <polygon points="417 19 490 88 542 740 490 671" />
+      <polygon points="246 397 436 607 379 671" />
+      <polygon points="12 355 347 707 287 775" />
+      <polygon points="417 677 529 835 415 759 339 853 577 1195 576 1336 265 849" />
+    </g>
+    <use xlink:href="#left" transform="translate(1151) scale(-1, 1)" />
+  </svg>
+
+  <br />
+  <a href="https://www.amazon.co.jp/dp/B00AU29BKS">ドラゴンクエスト ダイの大冒険 1</a>
+
+<script>
+    const img = document.querySelector('img')
+    const svg = document.querySelector('svg')
+
+    function start() {
+      let top = 38
+      !function move() {
+        top += 4
+        svg.style.top = top
+        if (top === 838) {
+          setTimeout(start, 2500)
+        }else {
+          requestAnimationFrame(move)
+        }
+      }()
+    }
+
+    start()
+  </script>
+</body>
+
+</html>

@@ -2,6 +2,7 @@ SVGの学習用実験場
 
 # クライアントサイド
 
+- [竜の紋章](emblem-of-dragon/index.html)
 - [我妻善逸](zenitsu/index.html)
 - [竈門禰豆子](nezuko/index.html)
 - [竈門炭治郎](tanjiro/index.html)
