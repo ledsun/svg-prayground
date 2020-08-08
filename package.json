@@ -1,7 +1,7 @@
 {
   "name": "svg-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "SVGの学習用実験場",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -12,5 +12,17 @@
   "license": "MIT",
   "devDependencies": {
     "connect": "^3.4.1"
-  }
+  },
+  "dependencies": {
+    "canvas": "^2.6.1",
+    "oslllo-svg2": "0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ledsun/svg-prayground.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ledsun/svg-prayground/issues"
+  },
+  "homepage": "https://github.com/ledsun/svg-prayground#readme"
 }
