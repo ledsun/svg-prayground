@@ -23,7 +23,7 @@ module.exports = class Canvas2Bitmap {
   // 行単位のパディングを求める
   // 1行のデータが4バイトの倍数出なかった場合は、4バイトになるまで埋めます。
   get _linePadding() {
-    return 4 - (this._width * this._depth) % 4;
+    return (this._width * this._depth) % 4 == 0 ? 0 : 4 - (this._width * this._depth) % 4;
   }
 
   get _lineDataSize() {
