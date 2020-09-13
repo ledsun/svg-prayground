@@ -11,11 +11,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "connect": "^3.4.1"
+    "connect": "^3.7.0"
   },
   "dependencies": {
     "canvas": "^2.6.1",
-    "oslllo-svg2": "0.0.1"
+    "oslllo-svg2": "0.1.0"
   },
   "repository": {
     "type": "git",
